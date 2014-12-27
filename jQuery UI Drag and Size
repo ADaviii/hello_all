@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>JQuery UI</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link type="text/css" rel="stylesheet" href="jui.css"/>
+	<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"/></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"/></script>
+</head>
+
+<body>
+	
+	<div class="square">Drag Me Around</div>
+	<div class="redSquare">Resize Me</div>
+	
+	<script>
+		//makes the square draggable
+		$(".square").draggable();
+		
+		
+		//makes the red square resizeable
+		$(".redSquare").resizeable();
+	
+	</script>
+
+</body>
+</html>
