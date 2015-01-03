@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <title>CodePlayer</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+	<!--The link tags-->
+    <link type="text/css" rel="stylesheet" href="codePlay.css"/>
+    <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
+	<!--The script tags-->
+	<script type="text/javascript" src="codePlayer.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+	
+</head>
+
+<body>
+
+<!--Wrapper which contanins contents of the page-->
+<div id="wrapper">
+
+	<div id="topBanner">
+		
+		<!--logo-->
+		<div id="officialName">
+			Adaviii Code Tester
+		</div>
+		
+		<!--submit/run button-->		
+		
+			<div id="runButton">
+			RUN!
+			</div>
+		
+		
+		<!--Menu/Toggle buttons-->
+		<div id="toggleButtons">
+			<ul id="myButtons">
+				<li class="toggles" id="htmlToggle">HTML</li>
+				<li class="toggles" id="cssToggle">CSS</li>
+				<li class="toggles" id="jsToggle">JS</li>
+				<li class="toggles" id="resultToggle">Result</li>
+			</ul>
+		</div>
+	</div>
+	
+	<!--No floats on either side (both) are allowed, so move to the end of the banner-->
+	<div class="cleared"></div>
+	
+	<!--Everything here is after floats were cleared on both sides-->
+	<div id="underBanner">
+		
+		<!--Container for HTML Text-->
+		<div class="container" id="HTMLContainer">
+		
+			<div class="logo">HTML</div>
+			<textarea class="textContainer" id="HTMLCode"></textarea>
+		
+		</div>
+		
+		<!--Container for CSS Text-->
+		<div class="container" id="CSSContainer">
+		
+			<div class="logo">CSS</div>
+			<textarea class="textContainer" id="CSSCode"></textarea>
+		
+		</div>
+		
+		<!--Container for Javascript Text-->
+		<div class="container" id="JSContainer">
+		
+			<div class="logo">JS</div>
+			<textarea class="textContainer" id="JSCode"></textarea>
+			
+		</div>
+		
+		<!--Container for Resulting stuff-->
+		<div class="container" id="ResultContainer">
+		
+			<div class="logo">Result</div>
+			
+				<iframe id="resultFrame"></iframe>
+		
+		</div>
+		
+	</div>
+		
+</div>
+	<script>
+		/*sizing and measurements*/
+		
+		var heightOfWindow = $(window).height(); //gets the height of the window
+		var heightOfBanner = $("#topBanner").height(); //gets the height of the top banner
+		var heightOfContainer = heightOfWindow - heightOfBanner; //subtracts the height of both the banner and the window to give the container the height
+		
+		var widthOfContainer = $(".container").width();//holds the width of each container (100%)
+		
+		/*Height and Width Settings*/
+		$(".container").height(heightOfContainer + "px"); //creates container after banner
+		
+		$("#runButton").button();
+		
+		//sizes up the iFrame 
+		$("#resultFrame").height(heightOfContainer+"px");
+		$("#resultFrame").width(widthOfContainer+"px");
+		
+		
+		/*JQuery UI Buttons and Functions*/
+		$(".toggles").click(function(){
+			
+			$(this).toggleClass("selected");
+			
+			//takes the HTML content in the toggles to compensate for naming all 'containers' in one swoop
+			var activeDiv = $(this).html();
+			
+			$("#"+activeDiv+"Container").toggle();
+			
+			//used to count how many (if any) containers are opened on-screen
+			var showingDivs = $(".container").filter(function(){
+			
+				return($(this).css("display") != "none"); //returns true if div isn't null 
+				
+			}).length;
+			
+			//adjusts the width of the containers depending on the number of containers opened
+			var width = 100/showingDivs;
+			$(".container").css("width", width + "%");
+			
+		});	
+
+		/*When run button is clicked, accept values from the textareas of all containers*/
+		$("#runButton").click(function(){
+			$("iframe").contents().find("html").html("<style>"+$("#CSSCode").val()+"</style>"+$("#HTMLCode").val());
+			
+			document.getElementById("resultFrame").contentWindow.eval($("#JSCode").val());
+			eval($("#JSCode").val());
+		});
+		
+	</script>
+	
+</body>
+</html>
