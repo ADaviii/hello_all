@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<!--CDNs for Bootstrap-->
+	<link type="text/css" rel="stylesheet" href="bootcss.css"/>
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/> <!--Bootstrap CSS-->
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> <!--Bootstrap Javascript-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script> <!--jQuery-->
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script> <!--jquery UI-->
+
+</head>
+
+<body>
+	<div class="navbar navbar-default">
+	
+		<div class="container-fluid">
+		
+			<div class="navbar-header">
+			
+			<a href="" class="navbar-brand">ADaviii</a>
+				
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+			</button>
+					
+			</div>
+			
+			<div class="collapse navbar-collapse">
+			
+				<ul class="nav navbar-nav">
+				
+					<li class="active"><a href="">Page 1</a></li>
+					<li><a href="">Page 2</a></li>
+					<li><a href="">Page 3</a></li>
+			
+				</ul>
+			
+			</div>
+		</div>
+	
+	</div>
+
+	<h1>Hello World Of The Internet! I'm on Bootstrap!</h1>
+	<div class ="container-fluid">
+		<div class="row">
+			
+			<div class="col-md-6 col-xs-8 col-sm-4 box">Content</div>
+			
+			<div class="col-md-6 col-xs-8 col-sm-4 box">Content</div>
+			
+		</div>
+		
+		<div class="row">
+			
+			<div class="col-md-4 box2">Even Div 1</div>
+			
+			<div class="col-md-4 box2 winner">Even Div 2</div>
+			
+			<div class="col-md-4 box2" >Even Div 3</div>
+			
+		</div>		
+	</div>
+	
+	<div class="container">
+	
+		<div class = "row">
+			
+			<div class="col-xs-8 col-md-6 col-sm-4 block">
+			I'm draggable! w00t!
+			</div>
+			
+		</div>
+	
+	</div>
+	
+	<script type="text/javascript">
+	
+	$(".block").draggable();
+	
+	$(".winner").droppable({
+		drop: function(){
+			alert("Yep! I'm the one!");
+		}
+	
+	});
+	
+	</script>
+</body>
+
+</html>
